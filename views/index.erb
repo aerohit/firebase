@@ -31,7 +31,10 @@
             type: 'POST',
             url: '/',
             data: params,
-            success: function(response) { console.log(response); }
+            success: function(response) {
+              $('#msg').val('');
+              console.log('success', response);
+            }
           });
       });
       var myDataRef = new Firebase('https://popping-inferno-944.firebaseio.com/' + 'todos');
@@ -40,8 +43,9 @@
         displayChatMessage(message);
       });
       function displayChatMessage(message) {
-        $('ul').append('<li><strong>' + message.name + ':</strong> <p>' + message.msg + '</p>');
-        console.log(message);
+        $('ul').append('<li><strong>' + message.name +
+            ':</strong> <p>' + message.msg +
+            '</p><p>' + message.server_says+ '</p>');
       };
     </script>
   </body>
